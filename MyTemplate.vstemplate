@@ -1,0 +1,29 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>R03_G2_DxLibSample</Name>
+    <Description>&lt;説明はありません。&gt;</Description>
+    <ProjectType>VC</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>R03_G2_DxLibSample</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="R03_G2_DxLibSample.vcxproj" File="R03_G2_DxLibSample.vcxproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="false" TargetFileName="$projectname$.vcxproj.filters">R03_G2_DxLibSample.vcxproj.filters</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="FPS.cpp">FPS.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="keyboard.cpp">keyboard.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="main.cpp">main.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="FPS.h">FPS.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="game.h">game.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="Keyboard.h">Keyboard.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="resource.rc">resource.rc</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="game.ico">game.ico</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
