@@ -143,7 +143,7 @@ CHARACTOR teki[TEKI_MAX];
 char tekiPath[TEKI_KIND][255] =
 {
 	{".\\Image\\teki_blue.png" },
-	{".\\Image\\teki_gray.png" },
+	{".\\Image\\teki_grey.png" },
 	{".\\Image\\teki_green.png" },
 	{".\\Image\\teki_mizu.png" },
 	{".\\Image\\teki_purple.png" },
@@ -338,7 +338,7 @@ BOOL GameLoad(VOID)
 	tama_moto.DivTate = 1;
 
 	//’e‚ÌƒpƒX‚ğƒRƒs[
-	strcpyDx(tama_moto.path, ".\\Image\\dia_blue.png");
+	strcpyDx(tama_moto.path, ".\\Image\\tama_purple.png");
 
 	//‰æ‘œ‚ğ•ªŠ„‚µ‚Ä“Ç‚İ‚İ
 	if (LoadImageDivMem(&tama_moto.handle[0], tama_moto.path, tama_moto.DivYoko, tama_moto.DivTate) == FALSE) { return FALSE; }
@@ -376,13 +376,13 @@ BOOL GameLoad(VOID)
 	player.img.IsDraw = TRUE;	//•`‰æ‚·‚é
 
 	//”wŒi‚Ì‰æ‘œ‚ğ“Ç‚İ‚İ‡@
-	if (LoadImageMem(&back[0], ".\\Image\\hoshi.jpg") == FALSE) { return FALSE; }
+	if (LoadImageMem(&back[0], ".\\Image\\spase.png") == FALSE) { return FALSE; }
 	back[0].x = 0;
 	back[0].y = -back[0].height;	//‰æ‘œ‚Ì‚‚³•ªAˆÊ’u‚ğã‚Éã‚°‚é
 	back[0].IsDraw = TRUE;	//•`‰æ‚·‚é
 
 	//”wŒi‚Ì‰æ‘œ‚ğ“Ç‚İ‚İ‡A
-	if (LoadImageMem(&back[1], ".\\Image\\hoshi_rev.jpg") == FALSE) { return FALSE; }
+	if (LoadImageMem(&back[1], ".\\Image\\spase_1.png") == FALSE) { return FALSE; }
 	back[1].x = 0;
 	back[1].y = 0;
 	back[1].IsDraw = TRUE;	//•`‰æ‚·‚é
@@ -830,7 +830,7 @@ VOID PlayProc(VOID)
 			//•`‰æ‚³‚ê‚Ä‚¢‚È‚¢“G‚ğ’T‚·
 			if (teki[i].img.IsDraw == FALSE)
 			{
-				int Bunkatu = 10;	//‰æ–Ê‚Ì‰¡•ªŠ„”
+				int Bunkatu = 50;	//‰æ–Ê‚Ì‰¡•ªŠ„”
 
 				if (Score < 1000)
 				{
