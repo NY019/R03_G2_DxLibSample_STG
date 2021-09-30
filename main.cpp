@@ -130,6 +130,8 @@ int tamaShotCntMAX = 5;
 
 IMAGE title;
 
+IMAGE clear;
+
 //プレイヤー
 CHARACTOR player;
 
@@ -309,6 +311,8 @@ int WINAPI WinMain(
 	}
 	DeleteGraph(title.handle);
 
+	DeleteGraph(clear.handle);
+
 	//読み込んだ画像を解放
 	for (int i = 0; i < TAMA_DIV_MAX; i++) { DeleteGraph(tama_moto.handle[i]); }
 
@@ -341,6 +345,11 @@ BOOL GameLoad(VOID)
 	title.x = GAME_WIDTH / 2 - title.width/2 ;
 	title.y = GAME_HEIGHT / 2 - title.height/2;
 	title.IsDraw = TRUE;	//描画する
+
+	if (LoadImageMem(&clear, ".\\Image\\タイトルロゴ.png") == FALSE) { return FALSE; }
+	clear.x = GAME_WIDTH / 2 - clear.width / 2;
+	clear.y = GAME_HEIGHT / 2 - clear.height / 2;
+	clear.IsDraw = TRUE;	//描画する
 
 	//弾の分割数を設定
 	tama_moto.DivYoko = 4;
@@ -543,9 +552,13 @@ BOOL LoadAudio(AUDIO* audio, const char* path, int volume, int playType)
 /// <param name=""></param>
 VOID GameInit(VOID)
 {
-	title.x = 0;
-	title.y = -title.height;	//画像の高さ分、位置を上に上げる
+	title.x = title.width;
+	title.y = title.height;	//画像の高さ分、位置を上に上げる
 	title.IsDraw = TRUE;	//描画する
+
+	clear.x = clear.width;
+	clear.y = clear.height;	//画像の高さ分、位置を上に上げる
+	clear.IsDraw = TRUE;	//描画する
 
 	//ゲームスコアを初期化
 	Score = 0;
@@ -1064,6 +1077,7 @@ VOID EndProc(VOID)
 /// </summary>
 VOID EndDraw(VOID)
 {
+	DrawGraph(clear.x, clear.y, clear.handle, TRUE);
 	DrawString(0, 0, "エンド画面", GetColor(0, 0, 0));
 	return;
 }
