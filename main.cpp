@@ -30,6 +30,7 @@ struct IMAGE
 	BOOL IsDraw = FALSE;//画像が描画できる？
 };
 
+
 //キャラクタの構造体
 struct CHARACTOR
 {
@@ -126,6 +127,8 @@ struct TAMA tama[TAMA_MAX];	//実際に使う
 //弾の発射カウンタ
 int tamaShotCnt = 0;
 int tamaShotCntMAX = 5;
+
+IMAGE title;
 
 //プレイヤー
 CHARACTOR player;
@@ -304,6 +307,7 @@ int WINAPI WinMain(
 
 		ScreenFlip();	//ダブルバッファリングした画面を描画
 	}
+	DeleteGraph(title.handle);
 
 	//読み込んだ画像を解放
 	for (int i = 0; i < TAMA_DIV_MAX; i++) { DeleteGraph(tama_moto.handle[i]); }
@@ -333,6 +337,11 @@ int WINAPI WinMain(
 /// <returns>読み込めたらTRUE / 読み込めなかったらFALSE</returns>
 BOOL GameLoad(VOID)
 {
+	if (LoadImageMem(&title, ".\\Image\\タイトルロゴ.png") == FALSE) { return FALSE; }
+	title.x = GAME_WIDTH / 2 - title.width/2 ;
+	title.y = GAME_HEIGHT / 2 - title.height/2;
+	title.IsDraw = TRUE;	//描画する
+
 	//弾の分割数を設定
 	tama_moto.DivYoko = 4;
 	tama_moto.DivTate = 1;
@@ -534,6 +543,10 @@ BOOL LoadAudio(AUDIO* audio, const char* path, int volume, int playType)
 /// <param name=""></param>
 VOID GameInit(VOID)
 {
+	title.x = 0;
+	title.y = -title.height;	//画像の高さ分、位置を上に上げる
+	title.IsDraw = TRUE;	//描画する
+
 	//ゲームスコアを初期化
 	Score = 0;
 
@@ -621,7 +634,7 @@ VOID TitleDraw(VOID)
 {
 
 
-
+	DrawGraph(title.x, title.y, title.handle, TRUE);
 	DrawString(0, 0, "タイトル画面", GetColor(0, 0, 0));
 	return;
 }
